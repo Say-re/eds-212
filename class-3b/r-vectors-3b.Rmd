@@ -1,0 +1,110 @@
+---
+title: "R-Vectors"
+author: "Sayre"
+date: "2023-01-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=TRUE}
+# Create vector
+marmots <- c('blue', 'green', 4, 'yellow')
+
+# Return value (concat values can only be of a single type and if numbers/characters are combined, numbers will be converted to character type)
+marmots
+
+# Check class
+class(marmots)
+
+# Create vector - Test with collection of all number values
+pika <- c(1.2, 6.8, 2.4, 7.3, 5)
+
+# Return values
+pika
+
+# Check class
+class(pika)
+
+# How to create integer based values (class 'numeric' are floating values i.e. those with decimal places)
+dragon <- c(30L, 5L, 12L, 22L, 40L)
+
+# Return values
+dragon
+
+# Check class
+class(dragon)
+
+```
+
+```{r include=TRUE}
+# Vector addition and subtraction, scalar multiplication and dot product
+# Declare vectors of equal length
+striped <- c(1.9, 2.5, 8.9, 12.8, 1.5)
+lemur <- c(2.5, 1.1, 0.8, 15.2, 2.0)
+
+# Addition
+striped + lemur
+
+# Subtraction
+striped - lemur
+
+# Scalar multiplication
+102 * striped
+
+# Dot product:
+lemur %*% striped
+```
+
+``` {r include=TRUE}
+# Matrices in R (Addition, subtraction, and scalar multiplication)
+
+# Create a sequence for the matrix
+some_values <- seq(from = 1, to = 10.5, by = 0.5)
+
+# View Values
+some_values
+
+# Convert to Matrix
+new_matrix <- matrix(data = some_values, nrow = 4, ncol = 5, byrow = TRUE)
+
+# Print created matrix
+new_matrix
+
+# Scalar multiplication
+20 * new_matrix
+
+# Addition or subtraction require matrices of the same dimensions
+
+# Create new sequence of values
+some_new_values <- seq(from = 10, to = 19.5, by = 0.5)
+
+# Create additional matrix for performing operations
+additional_matrix <- matrix(data = some_new_values, nrow = 4, ncol = 5, byrow = TRUE)
+
+# Verify matrix output
+additional_matrix
+
+# Addition
+additional_matrix + new_matrix
+
+# Subtraction
+additional_matrix - new_matrix
+```
+
+```{r include=TRUE}
+# Create 2 small matrices
+trees <- matrix(data = c(1, 5, 12, 10), nrow = 2, byrow = TRUE)
+leaves <- matrix(data = c(2, 3, 100, 12), nrow = 2, byrow = TRUE)
+
+# Verify output of matrices
+trees
+leaves
+
+# Matrix Multiplication
+trees %*% leaves
+
+
+```
