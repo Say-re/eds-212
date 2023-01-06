@@ -1,0 +1,61 @@
+---
+By: Sayre
+output: pdf_document
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+
+```
+
+``` {r include=TRUE}
+# Assign each function a namespace
+function_a <- expression(x ^ 2)
+function_b <- expression(2 * (3 * a + 2) ^ 4 - 5)
+function_c <- expression((-4 * t) / (t ^ 2 + 1) ^ 3)
+
+# Find derivative of each function
+derivative_a <- D(function_a, 'x')
+derivative_b <- D(function_b, 'a')
+derivative_c <- D(function_c, 't')
+
+# Verify output of derivatives
+derivative_a
+derivative_b
+derivative_c
+
+# Set variable values to determine slope at point on the function
+x <- 3
+a <- 1.2
+t <- 0
+
+# Verify output of derivatives
+eval(derivative_a)
+eval(derivative_b)
+eval(derivative_c)
+```
+
+
+``` {r include=TRUE}
+# Make scatter plot of bill length versus bill depth for penguins sampled
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c('blue', 'red', 'green')) +
+  labs(x = 'Bill length (mm)', 
+       y = 'Bill depth (mm)', 
+       title = 'Penguin bill length versus bill depth',
+       subtitle = 'Palmer Archipelago, Antarctica (2007 - 2009)') +
+  theme_minimal()
+```
+``` {r include=TRUE}
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm)) +
+  geom_jitter(aes(color = species)) +
+  scale_colour_manual(values = c('grey', 'black', 'red')) +
+  labs(x = 'Species',
+       y = 'Flipper length (mm)',
+       title = 'Penguin species versus flipper length',
+       subtitle = 'Palmer Archipelago, Antarctica (2007 - 2009)') +
+  theme_minimal()
+                                 
+```
