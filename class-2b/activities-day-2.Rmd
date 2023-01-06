@@ -35,3 +35,27 @@ eval(derivative_a)
 eval(derivative_b)
 eval(derivative_c)
 ```
+
+
+``` {r include=TRUE}
+# Make scatter plot of bill length versus bill depth for penguins sampled
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(values = c('blue', 'red', 'green')) +
+  labs(x = 'Bill length (mm)', 
+       y = 'Bill depth (mm)', 
+       title = 'Penguin bill length versus bill depth',
+       subtitle = 'Palmer Archipelago, Antarctica (2007 - 2009)') +
+  theme_minimal()
+```
+``` {r include=TRUE}
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm)) +
+  geom_jitter(aes(color = species)) +
+  scale_colour_manual(values = c('grey', 'black', 'red')) +
+  labs(x = 'Species',
+       y = 'Flipper length (mm)',
+       title = 'Penguin species versus flipper length',
+       subtitle = 'Palmer Archipelago, Antarctica (2007 - 2009)') +
+  theme_minimal()
+                                 
+```
