@@ -1,0 +1,30 @@
+---
+title: "EDS 212 Day 3 Task 2"
+author: "Sayre"
+date: "2023-01-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Determine output of vector problems completed by hand
+``` {r include=TRUE}
+# Create namespace for vectors
+vector_a <- c(1, 6)
+vector_b <- c(2, 4)
+
+# Addition
+vector_a + vector_b
+
+# Subtraction
+vector_b - vector_a
+
+# Scalar multiplication
+4 * vector_a
+
+# Dot product
+vector_a * vector_b
+
+```
