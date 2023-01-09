@@ -1,0 +1,133 @@
+---
+By: 'Sayre'
+Date: 'January 9th, 2022'
+---
+
+``` {r setup, include=FALSE}
+library(tidyverse)
+```
+
+## Vectors Refresher in R
+``` {r include=TRUE}
+boxed <- c(5.8, 4.2, 7.9, 2.6)
+dragon <- c(12.5, 9.8, 10.0, 5.5)
+
+# Addition of vectors
+boxed + dragon
+
+# Subtraction of vectors
+boxed - dragon
+
+# Scalar multiplication
+dragon * 1000
+
+# Dot product
+boxed %*% dragon
+```
+## Matrices in R
+``` {r include=TRUE}
+# Create a sequence of values
+new_values <- seq(from = 11, to = 20, by = 1)
+
+# Print values
+new_values
+
+# Convert to matrix
+new_matrix <- matrix(data = new_values, nrow = 2, ncol = 5, byrow = TRUE)
+
+# Log matrix
+new_matrix
+
+# Second sequence of values
+second_values <- seq(from = 101, to = 110, by = 1)
+
+# Print values
+second_values
+
+# Convert to matrix
+second_matrix <- matrix(data = second_values, nrow = 2, ncol = 5, byrow = TRUE)
+
+# Log matrix
+second_matrix
+
+# Matrix addition
+new_matrix + second_matrix
+
+# Matrix subtraction
+second_matrix - new_matrix
+
+# Scalar multiplication
+second_matrix * 100
+
+# Create matrix for multiplication
+multiplication_matrix <- matrix(data = second_values, nrow = 5, ncol = 2, byrow = TRUE)
+
+# Matrix multiplication
+multiplication_matrix %*% new_matrix
+```
+
+## Leslie Matrix Example #1
+``` {r include=TRUE}
+# Create matrix containing each stage of the population's lifecycle
+insect_leslie <- matrix(c(0, 0, 600, 0.2, 0, 0, 0, 0.8, 0), nrow = 3, ncol = 3, byrow = TRUE)
+
+# Log matrix
+insect_leslie
+
+# Initial conidtion (eggs, larvae, adults)
+insect_y0 <- c(100000, 8000, 2000)
+
+# Determine population structure at Y1
+insect_y1 <- insect_leslie %*% insect_y0
+
+# Log result
+insect_y1
+
+# Determine population structure at Y2
+insect_y2 <- insect_leslie %*% insect_y1
+
+# Log result
+insect_y2
+
+# Determine population structure at Y3
+insect_y3 <- insect_leslie %*% insect_y2
+
+# Log result
+insect_y3
+
+# Determine population structure at Y4
+insect_y4 <- insect_leslie %*% insect_y3
+
+# Log result
+insect_y4
+```
+
+## Leslie Matrix Example #2
+``` {r include=TRUE}
+# Create initial matrix for modeling population
+tree_matrix <- matrix(c(0, 0, 50, 0.1, 0, 0, 0, 0.06, 0.95), nrow = 3, ncol = 3, byrow = TRUE)
+
+# Log matrix
+tree_matrix
+
+# Create initial conditions (seeds, juveniles, adults)
+trees_yr_0 <- c(475, 0, 0)
+
+# Tree poopulation YR 1
+trees_yr_1 <- tree_matrix %*% trees_yr_0
+
+# Log result
+trees_yr_1
+
+# Tree poopulation YR 2
+trees_yr_2 <- tree_matrix %*% trees_yr_1
+
+# Log result
+trees_yr_2
+
+# Tree poopulation YR 3
+trees_yr_3 <- tree_matrix %*% trees_yr_2
+
+# Log result
+trees_yr_3
+```
