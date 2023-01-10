@@ -1,0 +1,78 @@
+---
+By: 'Say-re'
+Date: 'January 9th, 2023'
+---
+
+``` {r setup, include=FALSE}
+library(tidyverse)
+library(skimr)
+library(GGally)
+```
+
+# Fish population matrix creation
+``` {r include=TRUE}
+# LifeStage Rates of survival
+# Eggs(E) = 25%, Fry(F) = 10%, Juvenile(J) = 40%, Adults(A) = 80%
+# Adult Egg production = 699 eggs annually per individual
+fish_pop_matrix <- matrix(data = c(0, 0, 0, 600, 0.25, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0.4, 0.8), ncol = 4, nrow = 4, byrow = TRUE)
+
+# Log Fish population matrix
+fish_pop_matrix
+
+# Determine population structure after 1 year
+fish_pop_initial <- c(0, 40000, 600, 450)
+fish_pop_yr1 <- fish_pop_matrix %*% fish_pop_initial
+
+# Log fish population structure after 1 year
+fish_pop_yr1
+
+# Complete projections through year 6
+fish_pop_yr2 <- fish_pop_matrix %*% fish_pop_yr1
+fish_pop_yr3 <- fish_pop_matrix %*% fish_pop_yr2
+fish_pop_yr4 <- fish_pop_matrix %*% fish_pop_yr3
+fish_pop_yr5 <- fish_pop_matrix %*% fish_pop_yr4
+fish_pop_yr6 <- fish_pop_matrix %*% fish_pop_yr5
+
+# Log results from each year
+fish_pop_yr2
+fish_pop_yr3
+fish_pop_yr4
+fish_pop_yr5
+fish_pop_yr6
+```
+
+## Data exploration and summarizing in R
+``` {r include=TRUE}
+# Explore diamonds built-in data set
+
+# Column names
+names(diamonds)
+
+# Dimensions of Data
+dim(diamonds)
+
+# Summarize data
+summary(diamonds)
+
+# Head of dara
+head(diamonds)
+
+# Tail of data
+tail(diamonds)
+
+skimr::skim(diamonds)
+
+# Pair plot - Commented out due to time required to generate on data set
+# ggpairs(data = diamonds)
+
+# Create ggplot with price as a function of size
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(color = color)) +
+  scale_color_manual(values = c('blue', 'red', 'green', 'grey', 'pink', 'aquamarine', 'black'))
+
+# Create histogram of the carat column
+ggplot(data = diamonds, aes(x = carat)) +
+  geom_histogram(aes(colour = color, fill = color)) +
+  scale_color_manual(values = c('blue', 'red', 'green', 'grey', 'pink', 'aquamarine', 'black'))
+
+```

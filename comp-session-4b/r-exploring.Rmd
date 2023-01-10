@@ -1,0 +1,37 @@
+---
+By: 'Say-re'
+Date: 'January 9, 2023'
+---
+
+``` {r setup, include=FALSE}
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+```
+
+# Data analysis and General extraction methods
+
+## Examine data of Palmer Penguins
+``` {r include=TRUE}
+# Check column names of palmer penguins
+names(penguins)
+
+# Check dimensions
+dim(penguins)
+
+# Summary fo penguins
+summary(penguins)
+
+# Print first  lines of penguins
+head(penguins)
+
+# Print last 6 lines of penguins
+tail(penguins)
+
+# Make a pairPlot
+GGally:: ggpairs(penguins)
+
+# Make a histogram of penguin flipper lengths
+ggplot(data = penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram()
+```
