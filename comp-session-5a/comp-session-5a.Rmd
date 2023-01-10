@@ -1,0 +1,75 @@
+---
+By: 'Say-re'
+Date: 'January 9th, 2023'
+---
+
+``` {r setup, include=TRUE, warning=FALSE }
+library(tidyverse)
+```
+
+# Notes on general code chunk settings
+  * echo - whether to show code 
+  * warning - choose whether warnings are displayed
+  * results - hide/show output from code
+  * eval - evaluate or just print code
+  * include - show/hide entire input/output from code chunk
+  
+``` {r echo=FALSE, warning=FALSE, results=TRUE}
+# Show first entries in starwars data set
+head(starwars)
+
+# Check dimensions of data
+dim(starwars)
+
+summary(starwars)
+
+# Plot character mass versus height
+ggplot(data = starwars, aes(x = height, y = mass)) +
+  geom_point(aes(colour = mass)) +
+  scale_color_gradient(
+    limits = c(0, 200),
+    low = 'violet', 
+    high = 'aquamarine') +
+  xlab('Height (in)') +
+  ylab('Mass (lbs)')
+```
+
+``` {r echo=TRUE, warning=FALSE, results=TRUE}
+ggplot(data = starwars, aes(x = height)) +
+  geom_histogram(
+    colour='red',
+    fill='purple',
+  )
+```
+
+## Summary statistics for individual columns
+
+``` {r include=FALSE, warning=FALSE}
+# Log some columns from starwars data set
+starwars$name
+starwars$birth_year
+
+# Determine height mean (Remove null values to avoid NA response)
+sw_height_mean <- mean(starwars$height, na.rm = TRUE)
+
+# Determine median
+sw_height_median <- median(starwars$height, na.rm = TRUE)
+
+# Determine variance
+sw_height_variance <- var(starwars$height, na.rm = TRUE)
+
+# Determine SD
+sw_height_SD <- sd(starwars$height, na.rm = TRUE)
+
+# Log result
+sw_height_mean
+sw_height_median
+sw_height_variance
+sw_height_SD
+```
+
+Summary of starwars height statistics:  
+Mean - `r format(round(sw_height_mean, 2), nsmall = 2)` cm  
+Median - `r format(round(sw_height_median, 2), nsmall = 2)` cm  
+Variance - `r format(round(sw_height_variance, 2), nsmall = 2)`  
+Standard Deviation - +/- `r format(round(sw_height_SD, 2), nsmall = 2)` cm
