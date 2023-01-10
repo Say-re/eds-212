@@ -75,4 +75,8 @@ ggplot(data = diamonds, aes(x = carat)) +
   geom_histogram(aes(colour = color, fill = color)) +
   scale_color_manual(values = c('blue', 'red', 'green', 'grey', 'pink', 'aquamarine', 'black'))
 
+# Create jitter plot of price and clarity
+ggplot(data = diamonds, aes(x = clarity, y = price)) +
+  geom_jitter()
+
 ```
